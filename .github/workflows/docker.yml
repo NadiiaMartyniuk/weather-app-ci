@@ -45,8 +45,8 @@ jobs:
           context: .
           file: Dockerfile
           platforms: linux/amd64,linux/arm64
-          cache-from: type=registry,ref=docker.io/nadiiamartyniuk/cache:buildcache
-          cache-to:   type=registry,ref=docker.io/nadiiamartyniuk/cache:buildcache,mode=max
+          cache-from: type=registry,ref=ghcr.io/nadiiamartyniuk/cache:buildcache
+          cache-to:   type=registry,ref=ghcr.io/nadiiamartyniuk/cache:buildcache,mode=max
           push: true
           tags: |
             ghcr.io/nadiiamartyniuk/weather-app-ci:sha-${{ steps.vars.outputs.short_sha }}
