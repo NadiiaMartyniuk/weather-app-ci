@@ -47,8 +47,8 @@ jobs:
           cache-to:   type=registry,ref=nadiiamartyniuk/cache,mode=max
           push: true
           tags: |
-            ghcr.io/nadiiamartyniuk/${{ github.repository }}:sha-${{ steps.vars.outputs.short_sha }}
-            ghcr.io/nadiiamartyniuk/${{ github.repository }}:latest
+            ghcr.io/nadiiamartyniuk/${{ github.event.repository.name }}:sha-${{ steps.vars.outputs.short_sha }}
+            ghcr.io/nadiiamartyniuk/${{ github.event.repository.name }}:latest
 
       - name: Skanuj obraz Trivy
         uses: aquasecurity/trivy-action@0.28.0
