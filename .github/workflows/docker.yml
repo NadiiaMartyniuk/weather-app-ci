@@ -51,7 +51,7 @@ jobs:
             ghcr.io/nadiiamartyniuk/${{ github.repository }}:latest
 
       - name: Skanuj obraz Trivy
-        uses: aquasecurity/trivy-action@v0.28.0
+        uses: aquasecurity/trivy-action@0.28.0
         with:
           scan-type: image
           image-ref: ghcr.io/nadiiamartyniuk/${{ github.repository }}:sha-${{ steps.vars.outputs.short_sha }}
