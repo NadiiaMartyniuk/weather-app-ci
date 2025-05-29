@@ -38,18 +38,18 @@ jobs:
         id: vars
         run: echo "short_sha=$(echo $GITHUB_SHA | cut -c1-7)" >> $GITHUB_OUTPUT
 
-      - name: Buduj i wypychaj obraz
+      - name: Build & Push
         uses: docker/build-push-action@v6
         with:
           context: .
           file: Dockerfile
           platforms: linux/amd64,linux/arm64
-          cache-from: type=registry,ref=nadiiamartyniuk/cache
-          cache-to:   type=registry,ref=nadiiamartyniuk/cache,mode=max
+          cache-from: type=registry,ref=docker.io/nadiiamartyniuk/cache:buildcache
+          cache-to:   type=registry,ref=docker.io/nadiiamartyniuk/cache:buildcache,mode=max
           push: true
           tags: |
-            ghcr.io/nadiiamartyniuk/${{ github.event.repository.name }}:sha-${{ steps.vars.outputs.short_sha }}
-            ghcr.io/nadiiamartyniuk/${{ github.event.repository.name }}:latest
+            ghcr.io/nadiiamartyniuk/weather-app-ci:sha-${{ steps.vars.outputs.short_sha }}
+            ghcr.io/nadiiamartyniuk/weather-app-ci:latest
 
       - name: Skanuj obraz Trivy
         uses: aquasecurity/trivy-action@0.28.0
